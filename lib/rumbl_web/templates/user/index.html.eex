@@ -1,0 +1,10 @@
+<h1> List of Users </h1>
+
+<ul>
+  <%= for user <- @users do %>
+    <li>
+      <%= render "user.html", user: user %>
+      <span class="float-right"> <%= view_link(@conn, user) %> </span>
+    </li>
+  <% end %>
+</ul>
