@@ -48,7 +48,8 @@ defmodule RumblWeb.UserController do
       case Accounts.change_user(changeset) do
         {:ok, user} ->
           conn
-          |> redirect(to: Routes.user_path(conn, :show, user.id))
+          |> put_flash(:info, "Client id: #{user.id} successfully updated")
+          |> redirect(to: Routes.user_path(conn, :index))
 
         {:error, %Ecto.Changeset{} = changeset} ->
           render(conn, "edit.html", user: user, changeset: changeset |> Map.put(:action, :update))
