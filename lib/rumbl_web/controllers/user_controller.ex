@@ -53,9 +53,6 @@ defmodule RumblWeb.UserController do
         {:error, %Ecto.Changeset{} = changeset} ->
           render(conn, "edit.html", user: user, changeset: changeset |> Map.put(:action, :update))
       end
-
-
-      render(conn, "edit.html", user: user, changeset: changeset)
     end
   end
 
