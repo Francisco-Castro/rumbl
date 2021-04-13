@@ -18,6 +18,7 @@ defmodule RumblWeb.Router do
 
      get "/", PageController, :index
      resources "/users", UserController
+     resources "/videos", VideoController
 
   end
 
