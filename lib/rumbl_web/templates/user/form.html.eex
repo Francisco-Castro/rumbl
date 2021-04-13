@@ -1,0 +1,17 @@
+<%= form_for @changeset, @action, [method: @method], fn f -> %>
+
+<div class="form-group">
+  <%= label f, :name %>
+  <%= text_input f, :name, [class: "form-control"]  %>
+  <%= error_tag f, :name %>
+</div>
+
+<div class="form-group">
+  <%= label f, :username %>
+  <%= text_input f, :username, [class: "form-control"]  %>
+  <%= error_tag f, :username %>
+</div>
+
+<%= submit "Save", class: "btn btn-primary" %>
+
+<% end %>
