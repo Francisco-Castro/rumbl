@@ -8,10 +8,10 @@
     <h2>Resources</h2>
     <ul>
       <li>
-        <%= link("User", to: Routes.user_path(@conn, :index)) %>
+        <%= link("Users", to: Routes.user_path(@conn, :index)) %>
       </li>
       <li>
-        Client
+        <%= link("Videos", to: Routes.video_path(@conn, :index)) %>
       </li>
       <li>
         Site

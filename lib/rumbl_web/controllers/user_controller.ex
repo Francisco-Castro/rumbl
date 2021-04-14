@@ -5,12 +5,12 @@ defmodule RumblWeb.UserController do
   alias Rumbl.Accounts.User
 
   def index(conn, _params) do
-    users = Accounts.list_users()
+    users = User.Query.list!()
     render(conn, "index.html", users: users)
   end
 
   def show(conn, %{"id" => id}) do
-    user = Accounts.get_user(id)
+    user = User.Query.get!(id)
     render(conn, "show.html", user: user)
   end
 
@@ -32,7 +32,7 @@ defmodule RumblWeb.UserController do
 
   def edit(conn, %{"id" => id}) do
     with(
-      user <- Accounts.get_user(id)
+      {:ok, user} <- User.Query.get(id)
     ) do
       changeset = User.changeset(user, %{})
 
@@ -42,7 +42,7 @@ defmodule RumblWeb.UserController do
 
   def update(conn, %{"id" => id, "user" => user_params}) do
     with(
-      user <- Accounts.get_user(id)
+      {:ok, user} <- User.Query.get(id)
     ) do
       changeset = User.changeset(user, user_params)
       case Accounts.change_user(changeset) do
@@ -59,7 +59,7 @@ defmodule RumblWeb.UserController do
 
   def delete(conn, %{"id" => id}) do
     with(
-      user <- Accounts.get_user(id),
+      {:ok, user} <- User.Query.get(id),
       {:ok, r_user} <- Accounts.remove_user(user)
     ) do
 
