@@ -1,4 +1,4 @@
-# Rumbl
+# Rumbl.Meetup Mexico
 
 To start your Phoenix server:
 
